@@ -14,6 +14,12 @@
     <link rel="stylesheet" type="text/css" href="http://latex.codecogs.com/css/equation-embed.css"/>
     <script type="text/javascript" src="http://latex.codecogs.com/js/eq_config.js"></script>
     <script type="text/javascript" src="http://latex.codecogs.com/js/eq_editor-lite-18.js"></script>
+    <!--CodeMirror-->
+    <script src="/static/js/codemirror-4.4/lib/codemirror.js"></script>
+    <!--<link rel="stylesheet" href="http://www.firepad.io/examples/codemirror/lib/codemirror.css" />-->
+    <link rel="stylesheet" href="/static/css/monokai.css">
+    <!--Firepad-->
+    <!--<link rel="stylesheet" href="http://www.firepad.io/examples/firepad.css" />-->
   </head>
   <body>
     <script src='http://static.opentok.com/v2/js/opentok.min.js'></script>
@@ -24,6 +30,30 @@
     <script type="text/javascript">
         EqEditor.embed(toolbar);
         EqEditor.add(new EqTextArea('equation', 'latexInput'),false);
+    </script>
+    <!--
+    <div id="container">-->
+        <!--<img src="logo-v2.png" />-->
+        <!--Firepad live coding screen-->
+        <!--<div id="firepad" class="screen" style="width:100%; height:680px; background-color:#f3f3f3; border:1px solid black;">
+        </div>
+
+    </div>-->
+
+    <!--CodeMirror-->
+    <!--<script src="http://www.firepad.io/examples/codemirror/lib/codemirror.js"></script>-->
+    <!--Firepad-->
+    <script src="https://cdn.firebase.com/libs/firepad/0.1.4/firepad-min.js"></script>
+    <!--Firebase-->
+    <script src="https://cdn.firebase.com/js/client/1.0.17/firebase.js"></script>
+    <script src="/static/js/codemirror.js"></script>
+    <script src="/static/js/firepad-main.js"></script>
+    <script>
+        var firepadDiv = document.getElementById('firepad');
+        var firepadRef = new Firebase('https://blazing-fire-6125.firebaseio.com/');
+        var codeMirror = CodeMirror(firepadDiv, { lineWrapping: true });
+        var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror,
+            { richTextShortcuts: true, richTextToolbar: true });
     </script>
   </body>
 </html>
